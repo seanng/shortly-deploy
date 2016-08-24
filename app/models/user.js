@@ -13,6 +13,10 @@ var User = db.Model.extend({
       callback(isMatch);
     });
   },
+
+  remove: function(obj) {
+
+  },
   hashPassword: function() {
     var cipher = Promise.promisify(bcrypt.hash);
     return cipher(this.get('password'), null, null).bind(this)
