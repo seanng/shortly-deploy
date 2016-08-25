@@ -3,7 +3,27 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
+      options: {
+        separator: ';'
+      },
+      lib: {
+        src: ['lib/*.js'],
+        dest: 'public/dist/lib.min.js'
+      },
+      app: {
+        src: ['app/**/*.js', 'app/*.js'],
+        dest: 'public/dist/app.min.js'
+      },
+      public: {
+        src: ['public/**/*.js'],
+        dest: 'public/dist/public.min.js'
+      }
+      // style: {
+      //   src: ['public/*.css'],
+      //   dest: 'public/dist/style-min.css'
+      // }
     },
+
 
     mochaTest: {
       test: {
@@ -21,6 +41,18 @@ module.exports = function(grunt) {
     },
 
     uglify: {
+      lib: {
+        src: 'public/dist/lib.min.js',
+        dest: 'public/dist/lib.min.js'
+      },
+      app: {
+        src: 'public/dist/app.min.js',
+        dest: 'public/dist/app.min.js'
+      },
+      public: {
+        src: 'public/dist/public.min.js',
+        dest: 'public/dist/public.min.js'
+      }
     },
 
     eslint: {
@@ -30,6 +62,8 @@ module.exports = function(grunt) {
     },
 
     cssmin: {
+      src: 'public/style.css',
+      dest: 'public/dist/style.min.css'
     },
 
     watch: {
@@ -91,6 +125,8 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     // add your deploy tasks here
+    'concat',
+    'uglify',
     'shell:deploy'
   ]);
 
