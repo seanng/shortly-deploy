@@ -7,16 +7,12 @@ module.exports = function(grunt) {
         separator: ';'
       },
       lib: {
-        src: ['lib/*.js'],
+        src: ['public/lib/*.js'],
         dest: 'public/dist/lib.min.js'
       },
-      app: {
-        src: ['app/**/*.js', 'app/*.js'],
-        dest: 'public/dist/app.min.js'
-      },
-      public: {
-        src: ['public/**/*.js'],
-        dest: 'public/dist/public.min.js'
+      client: {
+        src: ['public/client/*.js'],
+        dest: 'public/dist/client.min.js'
       }
       // style: {
       //   src: ['public/*.css'],
@@ -45,13 +41,9 @@ module.exports = function(grunt) {
         src: 'public/dist/lib.min.js',
         dest: 'public/dist/lib.min.js'
       },
-      app: {
-        src: 'public/dist/app.min.js',
-        dest: 'public/dist/app.min.js'
-      },
-      public: {
-        src: 'public/dist/public.min.js',
-        dest: 'public/dist/public.min.js'
+      client: {
+        src: 'public/dist/client.min.js',
+        dest: 'public/dist/client.min.js'
       }
     },
 
