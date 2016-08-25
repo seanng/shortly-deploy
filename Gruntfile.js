@@ -119,6 +119,7 @@ module.exports = function(grunt) {
     // add your deploy tasks here
     'concat',
     'uglify',
+    'cssmin',
     'shell:deploy'
   ]);
 
