@@ -14,10 +14,6 @@ module.exports = function(grunt) {
         src: ['public/client/*.js'],
         dest: 'public/dist/client.min.js'
       }
-      // style: {
-      //   src: ['public/*.css'],
-      //   dest: 'public/dist/style-min.css'
-      // }
     },
 
 
@@ -50,6 +46,11 @@ module.exports = function(grunt) {
     eslint: {
       target: [
         // Add list of files to lint here
+        'app/config.js', 
+        'app/**/*.js',
+        'lib/*.js',
+        'public/client/*.js',
+        'public/lib/*.js'
       ]
     },
 
@@ -79,8 +80,14 @@ module.exports = function(grunt) {
 
     shell: {
       prodServer: {},
+      commit: {
+        command: 'git add . && git commit'
+      },
       deploy: {
-        command: 'git add . && git commit && git push live master'
+        command: 'git push live master'
+      },
+      github: {
+        command: 'git push origin master'
       }
     },
   });
@@ -107,6 +114,11 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
+    'concat',
+    'uglify',
+    'cssmin',
+    'shell:commit',
+    'shell:github'
   ]);
 
   grunt.registerTask('upload', function(n) {
@@ -119,9 +131,9 @@ module.exports = function(grunt) {
 
   grunt.registerTask('deploy', [
     // add your deploy tasks here
-    'concat',
-    'uglify',
-    'cssmin',
+    'mochaTest',
+    'eslint',
+    'build',
     'shell:deploy'
   ]);
 
