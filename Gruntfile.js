@@ -40,8 +40,7 @@ module.exports = function(grunt) {
         ],
         tasks: [
           'concat',
-          'uglify',
-
+          'uglify'
         ]
       },
       css: {
@@ -51,7 +50,8 @@ module.exports = function(grunt) {
     },
 
     shell: {
-      prodServer: {
+      prodServer: {},
+      deploy: {
         command: 'git add . && git commit && git push live master'
       }
     },
@@ -90,8 +90,8 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('deploy', [
-    // 'shell'
     // add your deploy tasks here
+    'shell:deploy'
   ]);
 
 
