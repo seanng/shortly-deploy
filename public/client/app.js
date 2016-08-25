@@ -8,7 +8,7 @@ window.Shortly = Backbone.View.extend({
 
   initialize: function() {
     console.log( 'Shortly is running' );
-    console.log('wheres wally')
+    console.log('wheres wally');
     $('body').append(this.render().el);
 
     this.router = new Shortly.Router({ el: this.$el.find('#container') });
@@ -17,6 +17,7 @@ window.Shortly = Backbone.View.extend({
     Backbone.history.start({ pushState: true });
   },
 
+//changes
   render: function() {
     this.$el.html( this.template() );
     return this;
