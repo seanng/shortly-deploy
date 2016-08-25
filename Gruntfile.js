@@ -87,7 +87,7 @@ module.exports = function(grunt) {
         command: 'git push live master'
       },
       github: {
-        command: 'git push origin master'
+        command: 'git add . && git commit && git push origin master'
       }
     },
   });
@@ -117,7 +117,7 @@ module.exports = function(grunt) {
     'concat',
     'uglify',
     'cssmin',
-    'shell:commit',
+    // 'shell:commit',
     'shell:github'
   ]);
 
